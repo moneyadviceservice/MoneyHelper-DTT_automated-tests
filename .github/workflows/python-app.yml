@@ -9,6 +9,12 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  BASEURL: ${{ vars.BASEURL }}
+  ENVIRONMENT: ${{ vars.ENVIRONMENT}}
+  LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+  LT_USERNAME: ${{ secrets.LT_USERNAME}}
+
 permissions:
   contents: read
 
