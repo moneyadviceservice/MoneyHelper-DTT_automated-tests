@@ -13,11 +13,14 @@ def step_impl(context, url):
 def step_impl(context):
     driver = context.driver
     time.sleep(1)
-    cookie_banner_count = driver.find_elements(By.CSS_SELECTOR, 'div#ccc-notify')
-    if len(cookie_banner_count):
-        driver.find_element(By.CSS_SELECTOR, moneyhelper_dtt_locators.accept_button).click()
-    else:
-        print('> Cookie banner already dismissed or not found')
+    try:
+        cookie_banner_count = driver.find_elements(By.CSS_SELECTOR, 'div#ccc-notify')
+        if len(cookie_banner_count):
+            driver.find_element(By.CSS_SELECTOR, moneyhelper_dtt_locators.accept_button).click()
+        else:
+            print('> Cookie banner already dismissed or not found')
+    except Exception:
+        pass
 
 @then('the cookie banner should not be visible')
 def step_impl(context):
